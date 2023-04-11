@@ -10,12 +10,14 @@
     background-color:#a2344a;
     border-radius: 7%;
     border: 2px solid black;
-    padding: 0.3%;
+    padding: 10px;
 }
-.input:hover{
-    background-color: #b8475d;
+
+.input::placeholder{
+    color: #eebcc57a;
+    font-family: "Times New Roman", Times, serif;
 }
-.input:active{
+.input:checked{
     background-color: #b8475d;
 }
 
@@ -23,8 +25,8 @@
     font-size: 15px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color:#a2344a;
-    padding: 0.3%;
-    margin: 1px;
+    padding: 10px;
+    margin: 1px 2px 1px 2px;
     border-radius: 10%;
     border: 1px solid black;
     color: #eebcc5;

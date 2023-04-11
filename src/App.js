@@ -7,6 +7,8 @@ import{Routes,Route, useLocation, useNavigate} from 'react-router-dom';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
+import Error from './components/Error/Error';
+
 
 
 function App() {
@@ -84,12 +86,14 @@ function App() {
    return (
       <div className='App'>
          {/* {HandleLocation()} */}
+         {/* {pathname !== '/' && pathname !== '/home' && pathname !== '/about' && <Error /> } */}
          {pathname !== '/' && <Nav onSearch={onSearch} searchRandom={searchRandom} />}
          <Routes>
             <Route path='/' element={<Form login={login}/>}></Route>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About />} />
             <Route path='/detail/:id' element={<Detail />} />
+            <Route path='*' element={<Error/>}/>
          </Routes>
       </div>
    );

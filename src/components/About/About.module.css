@@ -12,9 +12,15 @@
     color: #F9E2AF;
     border: 2px solid black;
     text-shadow: 1px 0 10px black;
+    transition: 0.5s;
 }
 
 .tituloAbout{
     margin: 0;
     font-style: oblique;
+}
+
+.about:hover{
+    background-color: #8f678c71;
+    box-shadow: 0px 0px 15px 2px #646aa867;
 }

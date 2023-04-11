@@ -10,7 +10,7 @@ export default function SearchBar({onSearch, searchRandom}) {
 
    return (
       <div className={style.nav}>
-         <input className={style.input} type='search' onChange={handleChange} value={id}/>
+         <input className={style.input} type='search' onChange={handleChange} value={id} placeholder="Escribe un id"/>
          <button className={style.button} onClick={() => {onSearch(id)}} >Agregar</button>
          <button className={style.button} onClick={searchRandom}>Random</button>
       </div>

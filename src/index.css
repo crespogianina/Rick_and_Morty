@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./images/fondoAPP.png');
+  background-image: url('./components/images/fondoAPP.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
