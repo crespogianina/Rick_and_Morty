@@ -24,13 +24,13 @@ export default function Form ({login}) {
         <form className={style.form} onSubmit={handleSubmit}>
             <div>
               <label className={style.label} htmlFor="email">Email: </label>
-              <input className={style.input} name="email" value={userData.email} onChange={handleChange} type="text"></input>
+              <input className={style.input} name="email" value={userData.email} onChange={handleChange} type="text" placeholder="Ingrese su email.."></input>
               <p>{errors.email}</p>
             </div>
 
             <div>
               <label htmlFor="password" className={style.label}>Password: </label>
-              <input className={style.input} name="password" value={userData.password} onChange={handleChange} type="text"></input>  
+              <input className={style.input} name="password" value={userData.password} onChange={handleChange} type="text" placeholder="Ingrese su password.."></input>  
               <p>{errors.password}</p>
             </div>
 

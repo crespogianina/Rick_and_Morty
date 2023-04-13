@@ -8,17 +8,18 @@ import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
 import Error from './components/Error/Error';
+import Favorites from './components/Favorites/Favorites';
 
 
 
 function App() {
-   const {pathname} = useLocation()
    const API_KEY = 'f8697bf85503.9eef98eb91d3370ab8f1';
    const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
-   const navigate = useNavigate();
-
    const EMAIL = 'crespogianina98@gmail.com';
    const PASSWORD = 'password3';
+   
+   const {pathname} = useLocation()
+   const navigate = useNavigate();
    
    const [characters,setCharacters] = useState([])
    const [access, setAccess] = useState(false);
@@ -92,6 +93,7 @@ function App() {
             <Route path='/' element={<Form login={login}/>}></Route>
             <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
             <Route path='/about' element={<About />} />
+            <Route path='/favorites' element={<Favorites onClose={onClose}/>} />
             <Route path='/detail/:id' element={<Detail />} />
             <Route path='*' element={<Error/>}/>
          </Routes>
