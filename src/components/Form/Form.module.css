@@ -32,13 +32,19 @@
 
 .input{
     margin: 2%;
-    color: #eebcc5;
+    color: #e3cbd0;
     background-color:#a2344a;
     border-radius: 7%;
     border: 2px solid black;
     padding: 3%;
     width: 100%;
+    
 }
+
+.input::placeholder{
+    color: #e3cbd0c0;
+}
+
 
 .button{
     font-size: 20px;
