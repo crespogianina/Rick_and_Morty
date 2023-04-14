@@ -25,7 +25,9 @@ export default function Detail () {
 
     return (
         <div className={style.h2}>
-
+         {
+            character.name ?
+            (<>
             <div className={style.text}>
             <h2>Name: {character?.name}</h2>
             <h2>Status: {character?.status}</h2>
@@ -33,7 +35,10 @@ export default function Detail () {
             <h2>Origin: {character?.origin?.name}</h2>
             </div>
             <img className={style.imageChar} src={character?.image} alt={character.name}/>
-          
+            </>) 
+            : <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif" alt="Loading" id={style.loading}/>
+         }
+         
         </div>
     )
 }

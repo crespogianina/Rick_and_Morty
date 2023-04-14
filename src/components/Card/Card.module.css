@@ -4,9 +4,9 @@
     align-items: center;
     background-color: #744c71a4;
     width: fit-content;
-    margin: 2%;
-    width: 18%;
-    border: 2px solid black;
+    margin: 1%;
+    width: 17%;
+    border: 1px solid black;
     border-radius: 2%;
     transition: 0.7s;
 }
@@ -17,16 +17,6 @@
     background-color: #744c71de;
 }
 
-.text{
-    display: flex;
-    flex-direction: column;
-    align-items: self-start;
-    padding-bottom: 2%;
-    text-align: start;
-}
-.isUnknown{
-    display: none;
-}
 
 img{
     width: 90%;
@@ -37,8 +27,10 @@ img{
 h2{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;
-    margin: 0.5%;
+    margin: 5%;
     color: #F9E2AF;
+    padding: 1%;
+    
 }
 
 .button{
@@ -52,7 +44,6 @@ h2{
 }
 
 .button:hover{
-    
     border: 1px aliceblue solid;
     color: aliceblue;
     background-color: #fa0e32;

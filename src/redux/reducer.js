@@ -1,8 +1,9 @@
-import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from "./action-types";
+import { ADD_FAV, CHANGE_ACCESS, FILTER, ORDER, REMOVE_FAV } from "./action-types";
 
 let initialState = {
     myFavorites:[],
-    allCharacters: []
+    allCharacters: [], 
+    access: false
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -36,7 +37,9 @@ const rootReducer = (state = initialState, action) => {
                 ? allCharacters.sort((a,b) => a.id - b.id ) 
                 : allCharacters.sort((a,b) => b.id - a.id   ) 
             }
-            default:
+        case CHANGE_ACCESS:
+            return{...state, access: !state.access};
+        default:
             return {...state};
     }
 

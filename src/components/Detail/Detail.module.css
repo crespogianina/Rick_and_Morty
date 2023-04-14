@@ -31,3 +31,11 @@
     border: 2px solid black;
     background-color: #744c71a4;
 }
+
+#loading{
+    opacity: 0.4;
+    display: flex;
+    justify-items: center;
+    background-color: rgba(0, 0, 0, 0.555);
+    width: 10%;
+}
