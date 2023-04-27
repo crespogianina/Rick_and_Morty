@@ -30,7 +30,6 @@ function Card({id,name,status,species,gender,origin,image,onClose,remove_Fav,add
     <div className={style.conteiner}>
       <div className={style.extraButtons}>
         <button onClick={handleFavorite} className={style.heart}>
-          {" "}
           {isFav ? "❤️" : "🤍"}
         </button>
         <button className={style.button} onClick={() => onClose(id)}>

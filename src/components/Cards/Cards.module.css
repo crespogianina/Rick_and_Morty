@@ -1,6 +1,0 @@
-.conteiner{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap-reverse;
-    justify-content: space-around;
-}

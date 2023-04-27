@@ -16,55 +16,68 @@ function App() {
   const URL_BASE = "http://localhost:3001/rickandmorty/character"
   const EMAIL = "crespogianina98@gmail.com";
   const PASSWORD = "password3";
-
+  const URL = 'http://localhost:3001/rickandmorty/login/';
+  
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
+  
   const [characters, setCharacters] = useState([]);
- 
+  
   const dispatch = useDispatch();
   const state = useSelector((state) => state.access)
+  const [access, setAccess] = useState(false)
   
-
-  const onSearch = (id) => {
-    if (characters && characters.find((char) => char.id === +id)) {
-      return alert("Ese personaje ya se encuentra en el Home");
-    }
-
-    axios(`${URL_BASE}/${id}`).then(({ data }) => {
-      if (data.name) {
-        setCharacters((oldChars) => [...oldChars, data]);
-      } else {
-        window.alert("¡No hay personajes con este ID!");
-      }
-    });
-  };
-
-  const onClose = (id) => {
-    setCharacters(characters.filter((character) => character.id !== id));
-  };
-
-  //* EJEMPLO MIO DE COMO HACER CON LOCATION
-  // const HandleLocation = () => {
-  //    if(location.pathname !== '/') return <Nav onSearch={onSearch} />;
-  //    return null;
-  // }
-
-  const login = (userData) => {
-    if (EMAIL === userData.email && PASSWORD === userData.password) {
-      dispatch(changeAccess())
-      navigate("/home");
-    } else {
-      alert("Ocurrió un error");
-    }
-  };
-
   useEffect(() => {
     !state && navigate("/");
   }, [state]);
 
+  const onSearch = async (id) => {
+    try {
+      if (characters && characters.find((char) => char.id === +id)) {
+        throw new Error("Ese personaje ya se encuentra en el Home");
+      }
+      const { data } = await axios(`${URL_BASE}/${id}`)
+      if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+        throw new Error("¡No hay personajes con este ID!");
+      }
+    } catch (error) {
+     alert(error)
+    }
+  };
+
+  
+  const login = async (userData) =>  {
+    try {
+      const { email, password } = userData;
+      const {data} = await axios(URL + `?email=${email}&password=${password}`)
+      
+      const { access } = data;
+      setAccess(access);
+      access && navigate('/home');
+      
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  
+  //* EJEMPLO MIO DE COMO HACER CON LOCATION
+  // const HandleLocation = () => {
+    //    if(location.pathname !== '/') return <Nav onSearch={onSearch} />;
+    //    return null;
+    // }
+
+    const onClose = (id) => {
+      setCharacters(characters.filter((character) => character.id !== id));
+    };
+    
+    
   const searchRandom = () => {
     let id = Math.floor(Math.random() * 800);
+    
+    if(characters.find((char) => char.id === id)) id = Math.floor(Math.random() * 800);
 
     if (characters.length && characters.find((char) => char.id === id)) {
       alert("Ese personaje ya se encuentra en el Home");

@@ -1,28 +1,33 @@
-const axios = require("axios");
+const URL = "https://rickandmortyapi.com/api/character";
+const axios = require('axios')
 
-const getCharById = (res, id) => {
-  axios(`https://rickandmortyapi.com/api/character/${id}`)
-    .then((response) => response.data)
-    .then((data) => {
-      const char = {
-        id,
-        name: data.name,
-        gender: data.gender,
-        species: data.species,
-        origin: data.origin,
-        image: data.image,
-        status: data.status,
-        location: data.location
+const getCharByID = async (req,res) => {
+  try {
+    const { id } = req.params;
+    const { data } = await axios(`${URL}/${id}`)
+ 
+      if(!data.name) throw new Error(`Faltan datos del personaje con ID: ${id}`);
+
+      const character = {
+        id:data.id,
+        name:data.name,
+        species:data.species,
+        gender:data.gender,
+        image:data.image,
+        status:data.status,
+        origin:data.origin
       }
-      res
-      .writeHead(200, {"Content-type": 'application/json'})
-      .end(JSON.stringify(char))
-    })
-    .catch((error) => {
-        res
-        .writeHead(500, {"Content-type": 'text/plain'})
-        .end('el personaje no se encontro' + error.message)
-    })
-};
+      return res.status(200).json(character);
+      
+      // return res.status(400).send('Not found')
 
-module.exports =  getCharById ;
+  } catch (error) {
+    return error.message.includes('ID')
+    ? res.status(400).send(error.message)
+    : res.status(500).send(error.response.data.error)
+  }
+}
+
+module.exports = {
+  getCharByID
+}
