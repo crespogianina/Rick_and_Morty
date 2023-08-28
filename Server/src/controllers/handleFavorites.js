@@ -4,7 +4,7 @@ const {User, Favorite} = require('../DB_connection')
 const postFav = async (req,res) => {
     try {
         const {id,name,status,species,gender,origin,image} = req.body;
-        if(!id || !name || !image) {
+        if(!id || !name || !image || !status) {
             return res.status(404).json({message:'the require information is missing'})
         }
 
